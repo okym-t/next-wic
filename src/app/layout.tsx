@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,6 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Script src="https://cdn-edge.karte.io/8671e8b06c871cbac77437dc550cb497/edge.js" />
+      <Script strategy="afterInteractive">
+        {`!function(n){if(!window[n]){var o=window[n]=function(){var n=[].slice.call(arguments);return o.x?o.x.apply(0,n):o.q.push(n)};o.q=[],o.i=Date.now(),o.allow=function(){o.o="allow"},o.deny=function(){o.o="deny"}}}("krt")`}
+      </Script>
       <body className={inter.className}>{children}</body>
     </html>
   );
